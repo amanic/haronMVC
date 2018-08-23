@@ -1,7 +1,4 @@
-/**
- *
- * Copyright (C), 2011-2017, 微贷网.
- */
+
 package mvc.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
