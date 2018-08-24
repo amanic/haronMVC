@@ -10,7 +10,9 @@
     <context:annotation-config/>
     <mvc:annotation-driven>
         <mvc:message-converters>
-           <ref bean="objectMapper"></ref>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
 
