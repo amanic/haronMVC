@@ -4,4 +4,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="mvc"/>
+
+    <bean id="beanBean" class="mvc.dal.obj.TestBeanObj" name="beanObj">
+        <property name="integer" value="1"/>
+        <property name="string" value="1"/>
+        <property name="object" value="1"/>
+    </bean>
 </beans>
