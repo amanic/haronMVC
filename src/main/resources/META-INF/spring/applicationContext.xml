@@ -7,7 +7,13 @@
 
     <bean id="beanBean" class="mvc.dal.obj.TestBeanObj" name="beanObj">
         <property name="integer" value="1"/>
-        <property name="string" value="1"/>
+        <property name="string" value="非延时加载"/>
+        <property name="object" value="1"/>
+    </bean>
+
+    <bean name="lazyObj" id="beanLazyBean" class="mvc.dal.obj.TestBeanObjLazy" lazy-init="true">
+        <property name="integer" value="1"/>
+        <property name="string" value="延时加载"/>
         <property name="object" value="1"/>
     </bean>
 </beans>

@@ -6,4 +6,8 @@ package mvc.service;
 public interface TestService {
 
     String testString(String var1);
+
+    String testString1(String var1);
+
+    String testString2(String var1);
 }

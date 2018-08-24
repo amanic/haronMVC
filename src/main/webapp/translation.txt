@@ -1,0 +1,55 @@
+base servlet for spring's web framework. provides integration with
+  a spring application context, in a javabean-based overall solution.
+
+  <p>this class offers the following functionality:
+  <ul>
+  <li>manages a {@link org.springframework.web.context.webapplicationcontext
+  webapplicationcontext} instance per servlet. the servlet's configuration is determined
+  by beans in the servlet's namespace.
+  <li>publishes events on request processing, whether or not a request is
+  successfully handled.
+  </ul>
+
+  <p>subclasses must implement {@link #doservice} to handle requests. because this extends
+  {@link httpservletbean} rather than httpservlet directly, bean properties are
+  automatically mapped onto it. subclasses can override {@link #initframeworkservlet()}
+  for custom initialization.
+
+  <p>detects a "contextclass" parameter at the servlet init-param level,
+  falling back to the default context class,
+  {@link org.springframework.web.context.support.xmlwebapplicationcontext
+  xmlwebapplicationcontext}, if not found. note that, with the default
+  {@code frameworkservlet}, a custom context class needs to implement the
+  {@link org.springframework.web.context.configurablewebapplicationcontext
+  configurablewebapplicationcontext} spi.
+
+  <p>accepts an optional "contextinitializerclasses" servlet init-param that
+  specifies one or more {@link org.springframework.context.applicationcontextinitializer
+  applicationcontextinitializer} classes. the managed web application context will be
+  delegated to these initializers, allowing for additional programmatic configuration,
+  e.g. adding property sources or activating profiles against the {@linkplain
+  org.springframework.context.configurableapplicationcontext#getenvironment() context's
+  environment}. see also {@link org.springframework.web.context.contextloader} which
+  supports a "contextinitializerclasses" context-param with identical semantics for
+  the "root" web application context.
+
+  <p>passes a "contextconfiglocation" servlet init-param to the context instance,
+  parsing it into potentially multiple file paths which can be separated by any
+  number of commas and spaces, like "test-servlet.xml, myservlet.xml".
+  if not explicitly specified, the context implementation is supposed to build a
+  default location from the namespace of the servlet.
+
+  <p>note: in case of multiple config locations, later bean definitions will
+  override ones defined in earlier loaded files, at least when using spring's
+  default applicationcontext implementation. this can be leveraged to
+  deliberately override certain bean definitions via an extra xml file.
+
+  <p>the default namespace is "'servlet-name'-servlet", e.g. "test-servlet" for a
+  servlet-name "test" (leading to a "/web-inf/test-servlet.xml" default location
+  with xmlwebapplicationcontext). the namespace can also be set explicitly via
+  the "namespace" servlet init-param.
+
+  <p>as of spring 3.1, {@code frameworkservlet} may now be injected with a web
+  application context, rather than creating its own internally. this is useful in servlet
+  3.0+ environments, which support programmatic registration of servlet instances. see
+  {@link #frameworkservlet(webapplicationcontext)} javadoc for details.

@@ -1,6 +1,8 @@
 package mvc.controller;
 
 import mvc.objects.ResultApi;
+import mvc.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,11 @@ import java.io.IOException;
 @Controller
 @RequestMapping("test")
 public class TestController {
+
+
+    @Autowired
+    TestService testService;
+
 
     @RequestMapping(value = "test1")
     @ResponseBody
@@ -39,5 +46,16 @@ public class TestController {
         response.getWriter().write(jsonData);
     }
 
+    @RequestMapping(value = "test4")
+    @ResponseBody
+    public ResultApi<String> test4(){
+        return ResultApi.successItem(testService.testString1(""));
+    }
 
+
+    @RequestMapping(value = "test5")
+    @ResponseBody
+    public ResultApi<String> test5(){
+        return ResultApi.successItem(testService.testString1(""));
+    }
 }
