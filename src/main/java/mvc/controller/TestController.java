@@ -58,4 +58,10 @@ public class TestController {
     public ResultApi<String> test5(){
         return ResultApi.successItem(testService.testString1(""));
     }
+
+    @RequestMapping(value = "test6")
+    @ResponseBody
+    public String test6(){
+        return testService.testString3("");
+    }
 }

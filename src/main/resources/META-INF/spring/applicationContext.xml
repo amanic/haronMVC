@@ -16,4 +16,16 @@
         <property name="string" value="延时加载"/>
         <property name="object" value="1"/>
     </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:redis.properties</value>
+            </list>
+        </property>
+    </bean>
+    <import resource="classpath*:META-INF/others/mvc-dal-db.xml" />
+
 </beans>

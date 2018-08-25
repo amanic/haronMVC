@@ -10,4 +10,7 @@ public interface TestService {
     String testString1(String var1);
 
     String testString2(String var1);
+
+    String testString3(String var1);
+
 }

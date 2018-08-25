@@ -1,5 +1,6 @@
 package beanFactoryTest;
 
+import mvc.dal.dao.UserMapper;
 import mvc.dal.obj.TestBeanObj;
 import mvc.service.TestService;
 import org.junit.Test;
@@ -21,6 +22,8 @@ public class BeanFactoryTest {
     @Autowired
     TestService testService;
 
+
+
     @Test
     public void testBeanFactoryLoad(){
         System.out.println(testService.testString("hello world!"));
@@ -31,5 +34,10 @@ public class BeanFactoryTest {
         BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("META-INF/spring/applicationContext.xml"));
         TestBeanObj obj = (TestBeanObj) beanFactory.getBean("beanObj");
         System.out.println(obj.toString());
+    }
+
+    @Test
+    public void test1(){
+        System.out.println(testService.testString3(""));
     }
 }
