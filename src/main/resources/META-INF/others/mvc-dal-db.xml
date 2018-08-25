@@ -94,7 +94,6 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mvc.dal.dao" />
-		<!--<property name="annotationClass" value="com.weidai.bwcrm.annotation.MybatisMapper" />-->
 		<property name="sqlSessionFactoryBeanName" value="bsqlSessionFactory"/>
 	</bean>
 
