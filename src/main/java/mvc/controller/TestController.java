@@ -64,4 +64,10 @@ public class TestController {
     public String test6(){
         return testService.testString3("");
     }
+
+    @RequestMapping(value = "test7")
+    @ResponseBody
+    public String test7(){
+        return testService.testString4("");
+    }
 }

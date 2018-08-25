@@ -13,4 +13,6 @@ public interface TestService {
 
     String testString3(String var1);
 
+    String testString4(String var1);
+
 }
