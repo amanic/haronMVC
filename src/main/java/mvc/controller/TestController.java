@@ -4,6 +4,7 @@ import mvc.objects.ResultApi;
 import mvc.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -97,5 +98,24 @@ public class TestController {
         map.put("date",new Date());
         map.put("old",date);
         return map;
+    }
+
+    /**
+     * 测试HttpEntity（好像是加了@ResponseBody的效果一样）
+     * @return
+     */
+    @RequestMapping(value="/test9",method=RequestMethod.GET)
+    public HttpEntity<String> test9(){
+        HttpEntity<String> stringHttpEntity = new HttpEntity<>("你好啊~");
+        return stringHttpEntity;
+    }
+
+    /**
+     * 和上面的test9结合起来测试
+     * @return
+     */
+    @RequestMapping(value="/test10",method=RequestMethod.GET)
+    public String test10(){
+        return "你好啊~";
     }
 }
