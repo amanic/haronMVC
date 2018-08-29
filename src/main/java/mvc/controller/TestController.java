@@ -101,7 +101,9 @@ public class TestController {
     }
 
     /**
-     * 测试HttpEntity（好像是加了@ResponseBody的效果一样）
+     * 测试{@link HttpEntity}（好像是加了@ResponseBody的效果一样）
+     * 猜想 {@link org.springframework.web.bind.annotation.RequestBody}也可以用
+     * {@link org.springframework.http.HttpEntity}来代替效果。//TODO 以上猜想未经证实
      * @return
      */
     @RequestMapping(value="/test9",method=RequestMethod.GET)
