@@ -18,8 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * do a test
  * Created by martea on 2018/8/23.
  */
 @Controller
