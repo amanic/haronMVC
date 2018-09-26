@@ -35,8 +35,31 @@
         <property name="suffix" value=".jsp"/>
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
+    <bean id="testSimple" class="mvc.controller.TestSimpleUrlHandlerMappingController"/>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/hello.do">testSimple</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+    <bean id="jsonView"
+          class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+    <bean class="mvc.config.GlobalExceptionResolver" id="exceptionResolver"></bean>
 
 
     <!-- 自动扫描装配 -->
     <context:component-scan base-package="mvc.controller"/>
+    
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/test/test1"/>
+            <mvc:exclude-mapping path="/test/test2"/>
+            <bean class="mvc.config.ATestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -120,4 +120,12 @@ public class TestController {
     public String test10(){
         return "你好啊~";
     }
+
+
+    @RequestMapping(value = "test11")
+    @ResponseBody
+    public String test11(){
+        Integer i = 1/0;
+        return i.toString();
+    }
 }
